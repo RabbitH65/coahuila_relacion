@@ -561,13 +561,13 @@ function RegistroForm({
             <article className="declaracion" key={declaracion.id}>
               <div className="declaracion__header">
                 <h3 className="declaracion__title">Declaracion {declaracion.ordenVisual}</h3>
-                <button
-                  className="btn btn--ghost"
-                  type="button"
-                  onClick={() => removeDeclaracion(declaracion.id)}
-                >
-                  Eliminar declaracion
-                </button>
+               <button
+                className="btn btn--danger"
+                type="button"
+                onClick={() => removeDeclaracion(declaracion.id)}
+              >
+                🗑 Eliminar declaración
+              </button>
               </div>
 
               <div className="field-grid">
@@ -730,7 +730,7 @@ function RegistroForm({
                       </label>
                       <div className="row-actions">
                         <button
-                          className="btn btn--ghost"
+                          className="btn btn--danger"
                           type="button"
                           onClick={() => removeCoordenada(declaracion.id, coord.id)}
                         >
@@ -809,7 +809,7 @@ function RegistroForm({
                       </label>
                       <div className="row-actions">
                         <button
-                          className="btn btn--ghost"
+                          className="btn btn--danger"
                           type="button"
                           onClick={() => removeFecha(declaracion.id, fecha.id)}
                         >
@@ -906,7 +906,7 @@ function RegistroForm({
                       )}
                       <div className="row-actions">
                         <button
-                          className="btn btn--ghost"
+                          className="btn btn--danger"
                           type="button"
                           onClick={() => removeImagen(declaracion.id, imagen.id)}
                         >
@@ -927,8 +927,15 @@ function RegistroForm({
           </div>
           <div className="action-row">
             <button className="btn btn--primary" type="submit" disabled={saving}>
-              {saving ? 'Guardando...' : submitLabel}
-            </button>
+            {saving ? (
+              <>
+                <span className="spinner-btn"></span>
+                Guardando...
+              </>
+            ) : (
+              submitLabel
+            )}
+          </button>
             {onCancel && (
               <button className="btn btn--ghost" type="button" onClick={onCancel}>
                 Cancelar
