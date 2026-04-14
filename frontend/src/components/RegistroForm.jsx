@@ -168,6 +168,7 @@ function RegistroForm({
   title = 'Captura de registros',
   subtitle = 'Pantalla base sin diseno final. Todas las clases son ganchos para diseno.',
   resetOnSuccess = true,
+  focusDeclaracionId = '',
 }) {
   const [registro, setRegistro] = useState(createRegistroState)
   const [declaraciones, setDeclaraciones] = useState([createDeclaracion()])
@@ -178,6 +179,20 @@ function RegistroForm({
     setRegistro(normalizeRegistro(initialData))
     setDeclaraciones(normalizeDeclaraciones(initialData))
   }, [initialData])
+
+  useEffect(() => {
+    if (!focusDeclaracionId) return
+
+    const timer = setTimeout(() => {
+      const target = document.querySelector(
+        `[data-declaracion-id="${focusDeclaracionId}"]`,
+      )
+      target?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      target?.classList.add('declaracion--focus')
+    }, 250)
+
+    return () => clearTimeout(timer)
+  }, [focusDeclaracionId, declaraciones])
 
   const handleRegistroChange = (field) => (event) => {
     setRegistro((prev) => ({ ...prev, [field]: event.target.value }))
@@ -558,7 +573,11 @@ function RegistroForm({
           </div>
 
           {declaracionesOrdenadas.map((declaracion) => (
-            <article className="declaracion" key={declaracion.id}>
+            <article
+              className="declaracion"
+              key={declaracion.id}
+              data-declaracion-id={declaracion.serverId || declaracion.id}
+            >
               <div className="declaracion__header">
                 <h3 className="declaracion__title">Declaracion {declaracion.ordenVisual}</h3>
                <button

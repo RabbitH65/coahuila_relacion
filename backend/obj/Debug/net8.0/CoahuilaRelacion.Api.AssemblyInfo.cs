@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CoahuilaRelacion.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3bc265e815f24b98ea927cb65e4a55822f950ca9")]
 [assembly: System.Reflection.AssemblyProductAttribute("CoahuilaRelacion.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CoahuilaRelacion.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

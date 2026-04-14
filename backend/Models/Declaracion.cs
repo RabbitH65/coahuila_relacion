@@ -18,4 +18,7 @@ public class Declaracion
     public List<DeclaracionCoordenada> Coordenadas { get; set; } = new();
     public List<DeclaracionFecha> Fechas { get; set; } = new();
     public List<DeclaracionImagen> Imagenes { get; set; } = new();
+    public List<DeclaracionActor> Actores { get; set; } = new();
+    public List<DeclaracionLugar> Lugares { get; set; } = new();
+    public List<DeclaracionCircunstancia> Circunstancias { get; set; } = new();
 }

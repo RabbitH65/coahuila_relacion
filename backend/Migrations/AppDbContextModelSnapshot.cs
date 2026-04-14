@@ -17,6 +17,67 @@ namespace CoahuilaRelacion.Api.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
 
+            modelBuilder.Entity("CoahuilaRelacion.Api.Models.Actor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Alias")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NombreNormalizado")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notas")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NombreNormalizado");
+
+                    b.ToTable("Actores");
+                });
+
+            modelBuilder.Entity("CoahuilaRelacion.Api.Models.Circunstancia", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NombreNormalizado")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NombreNormalizado");
+
+                    b.ToTable("Circunstancias");
+                });
+
             modelBuilder.Entity("CoahuilaRelacion.Api.Models.Declaracion", b =>
                 {
                     b.Property<Guid>("Id")
@@ -48,6 +109,68 @@ namespace CoahuilaRelacion.Api.Migrations
                     b.HasIndex("RegistroId");
 
                     b.ToTable("Declaraciones");
+                });
+
+            modelBuilder.Entity("CoahuilaRelacion.Api.Models.DeclaracionActor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ActorId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double?>("Confianza")
+                        .HasColumnType("REAL");
+
+                    b.Property<bool>("Confirmado")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid>("DeclaracionId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Origen")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActorId");
+
+                    b.HasIndex("DeclaracionId", "ActorId")
+                        .IsUnique();
+
+                    b.ToTable("DeclaracionActores");
+                });
+
+            modelBuilder.Entity("CoahuilaRelacion.Api.Models.DeclaracionCircunstancia", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("CircunstanciaId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double?>("Confianza")
+                        .HasColumnType("REAL");
+
+                    b.Property<bool>("Confirmado")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid>("DeclaracionId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Origen")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CircunstanciaId");
+
+                    b.HasIndex("DeclaracionId", "CircunstanciaId")
+                        .IsUnique();
+
+                    b.ToTable("DeclaracionCircunstancias");
                 });
 
             modelBuilder.Entity("CoahuilaRelacion.Api.Models.DeclaracionCoordenada", b =>
@@ -112,9 +235,6 @@ namespace CoahuilaRelacion.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Angulo")
-                        .HasColumnType("TEXT");
-
                     b.Property<Guid>("DeclaracionId")
                         .HasColumnType("TEXT");
 
@@ -145,6 +265,75 @@ namespace CoahuilaRelacion.Api.Migrations
                     b.HasIndex("DeclaracionId");
 
                     b.ToTable("DeclaracionImagenes");
+                });
+
+            modelBuilder.Entity("CoahuilaRelacion.Api.Models.DeclaracionLugar", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double?>("Confianza")
+                        .HasColumnType("REAL");
+
+                    b.Property<bool>("Confirmado")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid>("DeclaracionId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("LugarId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Origen")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LugarId");
+
+                    b.HasIndex("DeclaracionId", "LugarId")
+                        .IsUnique();
+
+                    b.ToTable("DeclaracionLugares");
+                });
+
+            modelBuilder.Entity("CoahuilaRelacion.Api.Models.Lugar", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Municipio")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NombreNormalizado")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notas")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Tipo")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NombreNormalizado");
+
+                    b.ToTable("Lugares");
                 });
 
             modelBuilder.Entity("CoahuilaRelacion.Api.Models.Registro", b =>
@@ -206,6 +395,44 @@ namespace CoahuilaRelacion.Api.Migrations
                     b.Navigation("Registro");
                 });
 
+            modelBuilder.Entity("CoahuilaRelacion.Api.Models.DeclaracionActor", b =>
+                {
+                    b.HasOne("CoahuilaRelacion.Api.Models.Actor", "Actor")
+                        .WithMany()
+                        .HasForeignKey("ActorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CoahuilaRelacion.Api.Models.Declaracion", "Declaracion")
+                        .WithMany("Actores")
+                        .HasForeignKey("DeclaracionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Actor");
+
+                    b.Navigation("Declaracion");
+                });
+
+            modelBuilder.Entity("CoahuilaRelacion.Api.Models.DeclaracionCircunstancia", b =>
+                {
+                    b.HasOne("CoahuilaRelacion.Api.Models.Circunstancia", "Circunstancia")
+                        .WithMany()
+                        .HasForeignKey("CircunstanciaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CoahuilaRelacion.Api.Models.Declaracion", "Declaracion")
+                        .WithMany("Circunstancias")
+                        .HasForeignKey("DeclaracionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Circunstancia");
+
+                    b.Navigation("Declaracion");
+                });
+
             modelBuilder.Entity("CoahuilaRelacion.Api.Models.DeclaracionCoordenada", b =>
                 {
                     b.HasOne("CoahuilaRelacion.Api.Models.Declaracion", "Declaracion")
@@ -239,13 +466,38 @@ namespace CoahuilaRelacion.Api.Migrations
                     b.Navigation("Declaracion");
                 });
 
+            modelBuilder.Entity("CoahuilaRelacion.Api.Models.DeclaracionLugar", b =>
+                {
+                    b.HasOne("CoahuilaRelacion.Api.Models.Declaracion", "Declaracion")
+                        .WithMany("Lugares")
+                        .HasForeignKey("DeclaracionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CoahuilaRelacion.Api.Models.Lugar", "Lugar")
+                        .WithMany()
+                        .HasForeignKey("LugarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Declaracion");
+
+                    b.Navigation("Lugar");
+                });
+
             modelBuilder.Entity("CoahuilaRelacion.Api.Models.Declaracion", b =>
                 {
+                    b.Navigation("Actores");
+
+                    b.Navigation("Circunstancias");
+
                     b.Navigation("Coordenadas");
 
                     b.Navigation("Fechas");
 
                     b.Navigation("Imagenes");
+
+                    b.Navigation("Lugares");
                 });
 
             modelBuilder.Entity("CoahuilaRelacion.Api.Models.Registro", b =>

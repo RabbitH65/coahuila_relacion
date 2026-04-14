@@ -1,0 +1,199 @@
+.relations-page {
+  display: grid;
+  gap: 18px;
+}
+
+.relations-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: var(--shadow);
+}
+
+.relations-eyebrow {
+  color: var(--muted);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+
+.relations-title {
+  margin: 6px 0 6px;
+  font-size: 1.7rem;
+}
+
+.relations-subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+.relations-search {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.relations-search__input {
+  min-width: 280px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+}
+
+.relations-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.relations-tab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.relations-tab strong {
+  min-width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #111;
+  color: #fff;
+}
+
+.relations-tab.is-active {
+  border-color: rgba(244, 214, 0, 0.75);
+  box-shadow: 0 10px 22px rgba(244, 214, 0, 0.18);
+}
+
+.relations-tab.is-active strong {
+  background: var(--accent);
+  color: #111;
+}
+
+.relations-status,
+.relations-empty {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.relations-status--error {
+  color: #b91c1c;
+}
+
+.relations-empty h3 {
+  margin: 0 0 6px;
+}
+
+.relations-empty p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.relations-list {
+  display: grid;
+  gap: 14px;
+}
+
+.relation-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.relation-card__summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.relation-card__type {
+  color: var(--muted);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.relation-card__name {
+  margin: 4px 0 0;
+  font-size: 1.2rem;
+}
+
+.relation-card__metrics {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.relation-card__metrics span {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 0.82rem;
+}
+
+.relation-table {
+  overflow-x: auto;
+}
+
+.relation-table__head,
+.relation-table__row {
+  display: grid;
+  grid-template-columns: 110px 90px 120px 170px minmax(260px, 1fr) 90px;
+  gap: 12px;
+  align-items: center;
+  min-width: 960px;
+  padding: 12px 18px;
+}
+
+.relation-table__head {
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.relation-table__row {
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+@media (max-width: 860px) {
+  .relations-hero {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .relations-search__input {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .relations-tabs {
+    grid-template-columns: 1fr;
+  }
+}

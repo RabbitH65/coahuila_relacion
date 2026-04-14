@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FK1grScT2grrU6i+9DvnmmdGydw4Y4HG6ErC8CwLTFY=",
+  "Hash": "ll8SgFoMX5hcZJwbYlWrHLUHp8JlJKiSSSyweFtK5R8=",
   "Source": "CoahuilaRelacion.Api",
   "BasePath": "_content/CoahuilaRelacion.Api",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "CoahuilaRelacion.Api\\wwwroot",
       "Source": "CoahuilaRelacion.Api",
-      "ContentRoot": "D:\\Users\\rodrigo.garciap\\Desktop\\coahuila_relacion\\backend\\wwwroot\\",
+      "ContentRoot": "D:\\Users\\rodrigo.garciap\\coahuila_relacion\\backend\\wwwroot\\",
       "BasePath": "_content/CoahuilaRelacion.Api",
       "Pattern": "**"
     }

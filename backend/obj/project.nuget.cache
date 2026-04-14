@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iZWDyy/ObSk=",
+  "dgSpecHash": "OwZIUwKI7Nw=",
   "success": true,
-  "projectFilePath": "D:\\Users\\rodrigo.garciap\\Desktop\\coahuila_relacion\\backend\\CoahuilaRelacion.Api.csproj",
+  "projectFilePath": "D:\\Users\\rodrigo.garciap\\coahuila_relacion\\backend\\CoahuilaRelacion.Api.csproj",
   "expectedPackageFiles": [
     "d:\\Users\\rodrigo.garciap\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "d:\\Users\\rodrigo.garciap\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.25\\microsoft.aspnetcore.openapi.8.0.25.nupkg.sha512",

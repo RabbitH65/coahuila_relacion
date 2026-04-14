@@ -3003,11 +3003,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\rodrigo.garciap\\Desktop\\coahuila_relacion\\backend\\CoahuilaRelacion.Api.csproj",
+      "projectUniqueName": "D:\\Users\\rodrigo.garciap\\coahuila_relacion\\backend\\CoahuilaRelacion.Api.csproj",
       "projectName": "CoahuilaRelacion.Api",
-      "projectPath": "D:\\Users\\rodrigo.garciap\\Desktop\\coahuila_relacion\\backend\\CoahuilaRelacion.Api.csproj",
+      "projectPath": "D:\\Users\\rodrigo.garciap\\coahuila_relacion\\backend\\CoahuilaRelacion.Api.csproj",
       "packagesPath": "d:\\Users\\rodrigo.garciap\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\rodrigo.garciap\\Desktop\\coahuila_relacion\\backend\\obj\\",
+      "outputPath": "D:\\Users\\rodrigo.garciap\\coahuila_relacion\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "d:\\Users\\rodrigo.garciap\\AppData\\Roaming\\NuGet\\NuGet.Config"

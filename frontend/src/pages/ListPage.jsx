@@ -1,5 +1,5 @@
 ﻿import { useEffect, useState } from 'react'
-import { fetchRegistros } from '../services/api'
+import { deleteRegistro, fetchRegistros } from '../services/api'
 import '../styles/list.css'
 
 function ListPage({ onEdit }) {
@@ -7,10 +7,13 @@ function ListPage({ onEdit }) {
   const [query, setQuery] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
+  const [deletingId, setDeletingId] = useState('')
 
   const load = async (currentQuery = '') => {
     setLoading(true)
     setError('')
+    setSuccess('')
     try {
       const data = await fetchRegistros(currentQuery)
       setItems(data)
@@ -27,6 +30,29 @@ function ListPage({ onEdit }) {
 
   const handleSearch = () => {
     load(query)
+  }
+
+  const handleDelete = async (item) => {
+    const label = item.numero || `AP ${item.ap || '-'} / Foja ${item.foja || '-'}`
+    const confirmed = window.confirm(
+      `Estas seguro de eliminar por completo el registro ${label}? Esta accion no se puede deshacer.`,
+    )
+
+    if (!confirmed) return
+
+    setDeletingId(item.id)
+    setError('')
+    setSuccess('')
+
+    try {
+      await deleteRegistro(item.id)
+      setItems((prev) => prev.filter((registro) => registro.id !== item.id))
+      setSuccess('Registro eliminado correctamente.')
+    } catch (err) {
+      setError(err.message || 'No se pudo eliminar el registro.')
+    } finally {
+      setDeletingId('')
+    }
   }
 
   return (
@@ -52,6 +78,7 @@ function ListPage({ onEdit }) {
 
       {loading && <p className="list__status">Cargando...</p>}
       {error && <p className="list__status list__status--error">{error}</p>}
+      {success && <p className="list__status list__status--success">{success}</p>}
 
       {!loading && !items.length && (
         <p className="list__status">Aun no hay registros.</p>
@@ -77,13 +104,21 @@ function ListPage({ onEdit }) {
             <span>{item.fecha ? item.fecha.slice(0, 10) : '-'}</span>
             <span>{item.declarante || '-'}</span>
             <span>{item.declaracionesCount ?? 0}</span>
-            <span>
+            <span className="list__row-actions">
               <button
                 className="btn btn--ghost"
                 type="button"
                 onClick={() => onEdit(item.id)}
               >
                 Editar
+              </button>
+              <button
+                className="btn btn--danger"
+                type="button"
+                disabled={deletingId === item.id}
+                onClick={() => handleDelete(item)}
+              >
+                {deletingId === item.id ? 'Eliminando...' : 'Eliminar'}
               </button>
             </span>
           </div>

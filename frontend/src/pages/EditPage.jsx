@@ -3,7 +3,7 @@ import RegistroForm from '../components/RegistroForm'
 import { fetchRegistro, updateRegistro } from '../services/api'
 import '../styles/list.css'
 
-function EditPage({ registroId, onBack }) {
+function EditPage({ registroId, focusDeclaracionId, onBack }) {
   const [registro, setRegistro] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -44,6 +44,7 @@ function EditPage({ registroId, onBack }) {
       title="Edicion de registro"
       subtitle="Edita los datos y agrega nuevas coordenadas, fechas o imagenes."
       resetOnSuccess={false}
+      focusDeclaracionId={focusDeclaracionId}
     />
   )
 }

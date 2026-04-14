@@ -69,7 +69,16 @@ public class RegistrosController : ControllerBase
                 .Include(r => r.Declaraciones)
                     .ThenInclude(d => d.Fechas)
                 .Include(r => r.Declaraciones)
-                    .ThenInclude(d => d.Imagenes);
+                    .ThenInclude(d => d.Imagenes)
+                .Include(r => r.Declaraciones)
+                    .ThenInclude(d => d.Actores)
+                        .ThenInclude(a => a.Actor)
+                .Include(r => r.Declaraciones)
+                    .ThenInclude(d => d.Lugares)
+                        .ThenInclude(l => l.Lugar)
+                .Include(r => r.Declaraciones)
+                    .ThenInclude(d => d.Circunstancias)
+                        .ThenInclude(c => c.Circunstancia);
         }
 
         var registro = await query.FirstOrDefaultAsync(r => r.Id == id);
@@ -248,8 +257,7 @@ public class RegistrosController : ControllerBase
             return NotFound();
         }
 
-        registro.Activo = false;
-        registro.FechaActualizacion = DateTime.UtcNow;
+        _db.Registros.Remove(registro);
         await _db.SaveChangesAsync();
 
         return NoContent();
